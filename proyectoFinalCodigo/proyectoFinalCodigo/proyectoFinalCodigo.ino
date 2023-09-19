@@ -1,4 +1,4 @@
-// #define POT_PIN_2 'sindefinir'
+// #define POT_PIN_2 'sindefinir'// instalar version de ESP8266 3.0.2
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <ESP8266WiFi.h>
