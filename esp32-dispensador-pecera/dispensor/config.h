@@ -5,11 +5,16 @@
 #include <Preferences.h>
 #include <AsyncTCP.h>
 #include "fauxmoESP.h"
+#include <HTTPClient.h>
+#include <Update.h>
 
 
 // Crear instancia de Preferences para almacenar credenciales
 Preferences preferences;
 /************************/
+#define CURRENT_VERSION "1.0.3"  // Versión actual del ESP32  
+const char* firmwareUrl = "https://raw.githubusercontent.com/Pryxe/firmware-dispensador/refs/heads/now/dispensor.ino.merged.bin";
+const char* versionUrl = "https://raw.githubusercontent.com/Pryxe/firmware-dispensador/refs/heads/now/version.txt";
 // Nombre del punto de acceso por defecto y contraseña
 const char *default_ap_ssid = "Dispensador";
 const char *default_ap_password = ""; // Cambiar por la contraseña deseada
@@ -39,3 +44,4 @@ bool estadoAP = false;
 bool search = false;
 
 fauxmoESP fauxmo;
+
