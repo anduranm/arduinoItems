@@ -7,8 +7,8 @@ void handleSetDispenseDuration() {
     preferences.putInt("duration", DISPENSE_DURATION);
     preferences.end();
 
-    String response = "<html><body><h1>Tiempo del dispensador actualizado a " + String(DISPENSE_DURATION) + " ms</h1></body></html>";
-    server.send(200, "text/html", response);
+      server.sendHeader("Location", "/");  // Redirigir a la página principal
+  server.send(303);  
   } else {
     server.send(400, "text/html", "<h1>Error: se requiere el parámetro 'duration'</h1>");
   }
@@ -32,12 +32,7 @@ void handleConnect() {
   ap_password = server.arg("ap_password");
   if (ap_ssid == "") ap_ssid = "Dispensador_AP";
   if (ap_password == "") ap_password = "default";
-
-  String response = "<html><body>";
-  response += "<h1>Conectando a " + ssid + "</h1>";
-  response += "<p>Por favor, espera unos momentos.</p>";
-  response += "</body></html>";
-  server.send(200, "text/html", response);
+  
 
   // Guardar las credenciales en la memoria flash
   preferences.begin("wifi", false);
@@ -60,6 +55,8 @@ void handleConnect() {
   } else {
     Serial.print("Sin connexion!");
   }
+  server.sendHeader("Location", "/");  // Redirigir a la página principal
+  server.send(303);
 }
 
 void handleAPconfig() {
@@ -225,8 +222,8 @@ void handleRoot() {
         <span>)rawliteral"
                 + internetStatus + R"rawliteral(</span>
       <h2>IP: )rawliteral"
-                + ipString + R"rawliteral(:8080</h2> <!-- Mostrar IP y puerto 8080 -->
-        <h2>Alimentar Dispositivo</h2>
+                + ipString + R"rawliteral(:8080</h2> 
+        <h2>Alimentar Peces</h2>
         <form action="/alimentar" method="POST">
         <input type="submit" value="Activar Alimentación">
         </form>
@@ -326,9 +323,9 @@ void handleRoot() {
             // Elimina cualquier carácter no numérico
             this.value = this.value.replace(/[^0-9]/g, '');
             
-            // Asegúrate de que el valor no sea menor que 5
-            if (this.value !== '' && parseInt(this.value) < 5) {
-                this.value = '5';
+            // Asegúrate de que el valor no sea menor que 0
+            if (this.value !== '' && parseInt(this.value) < 0) {
+                this.value = '0';
             }
         });
     </script>
