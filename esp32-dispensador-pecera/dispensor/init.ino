@@ -42,7 +42,7 @@ void wifiInit() {
   server.on("/toggleAlexaSearch", HTTP_POST, handleToggleAlexaSearch);
   server.on("/toggleAP", HTTP_POST, handleToggleAP);
   server.on("/alimentar", HTTP_POST, handleAlimentar);
-  server.on("/update", HTTP_POST, handleUpdate);
+  server.on("/update", HTTP_GET, updatePage);
   // Iniciar el servidor
   server.begin();
 }

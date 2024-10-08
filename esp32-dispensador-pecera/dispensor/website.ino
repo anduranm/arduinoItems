@@ -50,11 +50,6 @@ void handleConnect() {
     counter++;
   }
 
-  if (WiFi.status() == WL_CONNECTED) {
-    Serial.print("Conectado exitosamente!");
-  } else {
-    Serial.print("Sin connexion!");
-  }
   server.sendHeader("Location", "/");  // Redirigir a la página principal
   server.send(303);
 }
@@ -95,14 +90,6 @@ void handleAlimentar() {
 
 void handleToggleAlexaSearch() {
   search = !search;  // Toggle the search state
-  if (search) {
-    Serial.println("Buscando dispositivos Alexa...");
-    // Add any additional code needed to initiate the search process
-  } else {
-    Serial.println("Búsqueda desactivada.");
-    // Add any code needed to stop the search process if applicable
-  }
-
   // Send response to the client
   String response = "<html><body>";
   response += "<h1>Estado de búsqueda Alexa: " + String(search ? "Buscando" : "Desactivado") + "</h1>";
@@ -113,88 +100,78 @@ void handleToggleAlexaSearch() {
   server.send(303);
 }
 
-bool checkVersion() {
+void downloadAndUpdate() {
   HTTPClient http;
-  http.begin(versionUrl);
-
+  http.begin(firmwareUrl);
   int httpCode = http.GET();
+
   if (httpCode == HTTP_CODE_OK) {
-    String newVersion = http.getString();
-    newVersion.trim();  // Elimina espacios o saltos de línea
-    if (newVersion != CURRENT_VERSION) {
-      Serial.printf("Nueva versión disponible: %s\n", newVersion.c_str());
-      return true;  // Hay una nueva versión disponible
-    } else {
-      Serial.println("El firmware está actualizado.");
-      return false;  // Ya está en la última versión
-    }
-  } else {
-    Serial.printf("Error al verificar la versión. Código HTTP: %d\n", httpCode);
-    return false;
-  }
-}
+    int contentLength = http.getSize();
+    WiFiClient* client = http.getStreamPtr();
 
-bool checkForUpdates() {
-  if (!checkVersion()) {
-    return false;  // No continuar si ya está en la última versión
-  }
+    // Verificamos el espacio disponible
+    uint32_t maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
+    Serial.printf("Espacio disponible para la actualización: %u bytes\n", maxSketchSpace);
 
-  HTTPClient http;
-  http.begin(firmwareUrl);  // Usa el enlace RAW para descargar el binario
-
-  int httpCode = http.GET();
-  if (httpCode == HTTP_CODE_OK) {
-    size_t contentLength = http.getSize();
-    if (contentLength > 0) {
-      WiFiClient *client = http.getStreamPtr();
-
-      if (Update.begin(contentLength)) {
+    if (contentLength > 0 && contentLength <= maxSketchSpace) {
+      if (Update.begin(contentLength)) {  // Inicia el proceso de actualización
         size_t written = Update.writeStream(*client);
 
         if (written == contentLength) {
-          if (Update.end()) {
+          if (Update.end()) {  // Completa la actualización
             if (Update.isFinished()) {
-              Serial.println("Actualización OTA completada");
-              return true;
+              Serial.println("Actualización completada con éxito.");
+              ESP.restart();  // Reinicia el dispositivo
             } else {
-              Serial.println("Error: OTA no finalizada.");
+              Serial.println("Error: la actualización no se completó.");
             }
           } else {
-            Serial.printf("Error al finalizar la actualización OTA: %s\n", Update.errorString());
+            Serial.printf("Error al finalizar la actualización: %s\n", Update.errorString());
           }
         } else {
-          Serial.printf("Error al escribir el archivo, se escribieron %d de %d bytes.\n", written, contentLength);
+          Serial.printf("Error: solo se escribieron %d de %d bytes\n", written, contentLength);
         }
       } else {
-        Serial.println("No se pudo iniciar la actualización");
+        Serial.printf("Error: no se pudo iniciar la actualización.\n");
+        Update.printError(Serial);  // Imprime el error específico
       }
     } else {
-      Serial.println("El tamaño del archivo es incorrecto.");
+      Serial.printf("Error: tamaño de archivo inválido o excede el espacio disponible: %d bytes\n", contentLength);
     }
   } else {
     Serial.printf("Error al descargar el archivo. Código HTTP: %d\n", httpCode);
   }
-
-  return false;
 }
 
-void handleUpdate() {
-  String response = "<html><body>";
-  response += "<h1>Buscando actualizaciones</h1>";
-  response += "<p>Por favor, espera unos momentos.</p>";
+// Función que revisa si hay una nueva versión
+bool checkForUpdates() {
+  HTTPClient http;
+  http.begin(versionUrl);
+  int httpCode = http.GET();
 
-  // Comprobamos si hay actualizaciones
-  if (checkForUpdates()) {
-    response += "<h2>Firmware actualizado exitosamente.</h2>";
+  if (httpCode == HTTP_CODE_OK) {
+    String newVersion = http.getString();
+    newVersion.trim();  // Elimina espacios y saltos de línea
+
+    if (newVersion != CURRENT_VERSION) {  // Reemplaza CURRENT_VERSION con la versión actual de tu firmware
+      return true;
+    } else {
+      return false;
+    }
   } else {
-    response += "<h2>No hay actualizaciones disponibles.</h2>";
+    return false;
   }
+}
 
-  // Añadimos un botón para volver al inicio
-  response += "<p><a href='/'>Volver al inicio</a></p>";  // Asegúrate de que esta URL sea correcta para tu aplicación
-  response += "</body></html>";
+void updatePage() {
+  server.sendHeader("Connection", "close");
+  server.send(200, "text/html", "<html><body><h1>Iniciando actualizacion...</h1></body></html>");
 
-  server.send(200, "text/html", response);
+  if (checkForUpdates()) {
+    downloadAndUpdate();
+  } else {
+    server.send(200, "text/html", "<html><body><h1>No hay actualizaciones disponibles.<a href='/'>Volver al inicio</a></h1></body></html>");
+  }
 }
 
 void handleRoot() {
@@ -229,6 +206,9 @@ void handleRoot() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurar WiFi</title>
     <style>
+        a {
+            color: #3bf5fc;
+        }
         body {
             display: flex;
             justify-content: center;
@@ -436,9 +416,9 @@ void handleRoot() {
             </label>
         </div>
 
-        <form action="/update" method="POST">
+        <!-- <form action="/update" method="GET">
             <input type="submit" value="Buscar Actualizaciones" class="">
-        </form>
+        </form> -->
 
         <div class="network">
             <button class="buttonConfig" id="buttonApConfig">Config Access Point</button>

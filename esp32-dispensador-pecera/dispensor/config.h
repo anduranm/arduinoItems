@@ -8,11 +8,10 @@
 #include <HTTPClient.h>
 #include <Update.h>
 
-
 // Crear instancia de Preferences para almacenar credenciales
 Preferences preferences;
 /************************/
-#define CURRENT_VERSION "1.0.3"  // Versión actual del ESP32  
+#define CURRENT_VERSION "0.1.0r"  // Versión actual del ESP32  
 const char* firmwareUrl = "https://raw.githubusercontent.com/Pryxe/firmware-dispensador/refs/heads/now/dispensor.ino.merged.bin";
 const char* versionUrl = "https://raw.githubusercontent.com/Pryxe/firmware-dispensador/refs/heads/now/version.txt";
 // Nombre del punto de acceso por defecto y contraseña
