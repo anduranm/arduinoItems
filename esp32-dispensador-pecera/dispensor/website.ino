@@ -423,7 +423,7 @@ void handleRoot() {
         <div class="switchContainer">
             <h2>Busqueda</h2>
             <label class="switch">
-                <input type='checkbox' id='searchToggle' onchange='toggleAlexaSearch()'" + String(search ? " checked" : "") + ">
+                <input type='checkbox' id='searchToggle' onchange='toggleAlexaSearch()' )rawliteral" + String(search ? "checked" : "") + R"rawliteral(>
                 <span class="slider"></span>
             </label>
         </div>
@@ -431,7 +431,7 @@ void handleRoot() {
         <div class="switchContainer">
             <h2>Access Point</h2>
             <label class="switch">
-                <input type='checkbox' id='apToggle' onchange='toggleAccessPoint()'" + String(estadoAP ? " checked" : "") + ">
+                <input type='checkbox' id='apToggle' onchange='toggleAccessPoint()' )rawliteral" + String(estadoAP ? "checked" : "") + R"rawliteral(>
                 <span class="slider"></span>
             </label>
         </div>
@@ -531,37 +531,38 @@ void handleRoot() {
             }
         });
 
-        function toggleAlexaSearch() {
-    const isChecked = document.getElementById('searchToggle').checked;
+function toggleAlexaSearch() {
     fetch('/toggleAlexaSearch', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ state: isChecked })
+        }
     })
-    .then(response => response.json())
-    .then(data => {
-        alert('Estado de búsqueda actualizado');
+    .then(() => {
         location.reload();
     })
+    .catch((error) => {
+        alert('Estado del Access Point actualizado');
+        location.reload();
+    });
 }
 
 function toggleAccessPoint() {
-    const isChecked = document.getElementById('apToggle').checked;
     fetch('/toggleAP', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ state: isChecked })
+        }
     })
-    .then(response => response.json())
-    .then(data => {
-        alert('Estado del Access Point actualizado');
+    .then(() => {
         location.reload();
     })
+    .catch((error) => {
+        alert('Estado de búsqueda actualizado');
+        location.reload();
+    });
 }
+
     </script>
 </body>
 
