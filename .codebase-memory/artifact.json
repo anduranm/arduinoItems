@@ -1,0 +1,11 @@
+{
+    "schema_version": 2,
+    "commit": "7695f0997dbc1fcfc148810338ba18e98bd4201a",
+    "indexed_at": "2026-09-08T07:48:01Z",
+    "project": "arduinoItems",
+    "nodes": 981,
+    "edges": 988,
+    "original_size": 2424832,
+    "compressed_size": 106653,
+    "compression_level": 9
+}

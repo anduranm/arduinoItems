@@ -1,0 +1,18 @@
+node_modules/
+dist/
+build/
+out/
+.venv/
+__pycache__/
+
+# Lo de abajo NO es codigo de Andres: son librerias de terceros y una herramienta
+# descargada. Sin esto el grafo se traga 150 MB y search_graph devuelve codigo ajeno.
+librerias/
+otros proyectos/
+CoolTermWin64Bit/
+hackwifi/
+hack wifi ESP8266/
+
+# Adafruit y compania viven tambien aca dentro.
+proyectos/libraries/
+*/libraries/
