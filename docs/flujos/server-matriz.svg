@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 638" width="800" height="638" font-family="Arial, Helvetica, sans-serif" font-size="13">
+<title>Servidor web de la matriz de LEDs</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect width="800" height="638" fill="#ffffff"/>
+<rect x="185" y="20" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="44.5">Inicio</tspan></text>
+<line x1="260" y1="60" x2="260" y2="94" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="94" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="118">setup: 9 pines como salida y OE en</tspan><tspan x="260" y="135">LOW</tspan></text>
+<line x1="260" y1="150" x2="260" y2="184" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="184" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="208">WiFi.begin y esperar conexión sin</tspan><tspan x="260" y="225">tope; imprimir la IP</tspan></text>
+<line x1="260" y1="240" x2="260" y2="274" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="274" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="298">Rutas «/», /pattern1, /pattern2 y</tspan><tspan x="260" y="315">404; server.begin</tspan></text>
+<line x1="260" y1="330" x2="260" y2="364" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="116,364 420,364 404,420 100,420" fill="#f3f4f6" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="388">Usuario abre /pattern1 o</tspan><tspan x="260" y="405">/pattern2</tspan></text>
+<line x1="260" y1="420" x2="260" y2="454" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="454" width="320" height="90" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="478">Escribir HIGH/LOW en los pines</tspan><tspan x="260" y="495">A1..D2 según el patrón; no responde</tspan><tspan x="260" y="512">una página (el cliente queda sin</tspan><tspan x="260" y="529">respuesta)</tspan></text>
+<line x1="260" y1="544" x2="260" y2="578" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="185" y="578" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="602.5">Fin</tspan></text>
+</svg>

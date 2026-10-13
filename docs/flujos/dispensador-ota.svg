@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 801" width="800" height="801" font-family="Arial, Helvetica, sans-serif" font-size="13">
+<title>Dispensador: actualización de firmware (GET /update)</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect width="800" height="801" fill="#ffffff"/>
+<rect x="185" y="20" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="44.5">Inicio</tspan></text>
+<line x1="260" y1="60" x2="260" y2="94" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="116,94 420,94 404,150 100,150" fill="#f3f4f6" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="118">Alguien en la red abre GET</tspan><tspan x="260" y="135">/update</tspan></text>
+<line x1="260" y1="150" x2="260" y2="184" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="184" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="208">Enviar «Iniciando actualizacion» y</tspan><tspan x="260" y="225">consultar versionUrl</tspan></text>
+<line x1="260" y1="240" x2="260" y2="274" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="260,274 425,324.5 260,375 95,324.5" fill="#fef9c3" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="308.0">¿HTTP 200 y la versión</tspan><tspan x="260" y="325.0">remota difiere de</tspan><tspan x="260" y="342.0">CURRENT_VERSION?</tspan></text>
+<text x="268" y="395" font-size="12" font-weight="bold" fill="#b45309">Sí</text>
+<line x1="425" y1="324.5" x2="480" y2="324.5" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/><text x="431" y="318.5" font-size="12" font-weight="bold" fill="#b45309">No</text>
+<rect x="480" y="288.0" width="220" height="73" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="312.0">Segundo send(): «No hay</tspan><tspan x="590" y="329.0">actualizaciones</tspan><tspan x="590" y="346.0">disponibles»</tspan></text>
+<line x1="590" y1="361.0" x2="590" y2="385.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="545" y="385.0" width="90" height="36" rx="18" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="408.0">Fin</tspan></text>
+<line x1="260" y1="375" x2="260" y2="409" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="409" width="320" height="73" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="433">Descargar firmwareUrl y validar</tspan><tspan x="260" y="450">tamaño contra el espacio libre del</tspan><tspan x="260" y="467">sketch</tspan></text>
+<line x1="260" y1="482" x2="260" y2="516" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="260,516 425,566.5 260,617 95,566.5" fill="#fef9c3" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="550.0">¿Update.begin,</tspan><tspan x="260" y="567.0">writeStream completo y</tspan><tspan x="260" y="584.0">Update.end correctos?</tspan></text>
+<text x="268" y="637" font-size="12" font-weight="bold" fill="#b45309">Sí</text>
+<line x1="425" y1="566.5" x2="480" y2="566.5" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/><text x="431" y="560.5" font-size="12" font-weight="bold" fill="#b45309">No</text>
+<rect x="480" y="530.0" width="220" height="73" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="554.0">Error por Serial; el</tspan><tspan x="590" y="571.0">equipo sigue con la</tspan><tspan x="590" y="588.0">versión actual</tspan></text>
+<line x1="590" y1="603.0" x2="590" y2="627.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="545" y="627.0" width="90" height="36" rx="18" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="650.0">Fin</tspan></text>
+<line x1="260" y1="617" x2="260" y2="651" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="651" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="675">ESP.restart() con el firmware nuevo,</tspan><tspan x="260" y="692">sin verificar firma ni hash</tspan></text>
+<line x1="260" y1="707" x2="260" y2="741" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="185" y="741" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="765.5">Fin</tspan></text>
+</svg>

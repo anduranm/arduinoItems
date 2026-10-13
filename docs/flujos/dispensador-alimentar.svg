@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 741" width="800" height="741" font-family="Arial, Helvetica, sans-serif" font-size="13">
+<title>Dispensador: dar de comer (web o Alexa)</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect width="800" height="741" fill="#ffffff"/>
+<rect x="185" y="20" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="44.5">Inicio</tspan></text>
+<line x1="260" y1="60" x2="260" y2="94" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="116,94 420,94 404,150 100,150" fill="#f3f4f6" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="118">Orden: POST /alimentar o «Alexa,</tspan><tspan x="260" y="135">enciende Dispensador»</tspan></text>
+<line x1="260" y1="150" x2="260" y2="184" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="184" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="208">servoOnAction = true (la web</tspan><tspan x="260" y="225">responde 303 hacia /)</tspan></text>
+<line x1="260" y1="240" x2="260" y2="274" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="260,274 425,317.0 260,360 95,317.0" fill="#fef9c3" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="309.0">¿servoOnAction es</tspan><tspan x="260" y="326.0">verdadero en el loop?</tspan></text>
+<text x="268" y="380" font-size="12" font-weight="bold" fill="#b45309">Sí</text>
+<line x1="425" y1="317.0" x2="480" y2="317.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/><text x="431" y="311.0" font-size="12" font-weight="bold" fill="#b45309">No</text>
+<rect x="480" y="289.0" width="220" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="313.0">El loop sigue sin mover el</tspan><tspan x="590" y="330.0">servo</tspan></text>
+<line x1="590" y1="345.0" x2="590" y2="369.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="545" y="369.0" width="90" height="36" rx="18" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="392.0">Fin</tspan></text>
+<line x1="260" y1="360" x2="260" y2="394" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="394" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="418">Servo en el pin 15; espera 1 s;</tspan><tspan x="260" y="435">abrir a 0 grados</tspan></text>
+<line x1="260" y1="450" x2="260" y2="484" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="484" width="320" height="73" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="508">Esperar DISPENSE_DURATION ms</tspan><tspan x="260" y="525">(bloquea el loop) y cerrar a 160</tspan><tspan x="260" y="542">grados</tspan></text>
+<line x1="260" y1="557" x2="260" y2="591" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="591" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="615">servoOnAction = false; esperar 1 s y</tspan><tspan x="260" y="632">soltar el servo</tspan></text>
+<line x1="260" y1="647" x2="260" y2="681" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="185" y="681" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="705.5">Fin</tspan></text>
+</svg>

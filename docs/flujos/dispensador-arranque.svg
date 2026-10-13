@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 865" width="800" height="865" font-family="Arial, Helvetica, sans-serif" font-size="13">
+<title>Dispensador: arranque</title>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#374151"/></marker></defs>
+<rect width="800" height="865" fill="#ffffff"/>
+<rect x="185" y="20" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="44.5">Inicio</tspan></text>
+<line x1="260" y1="60" x2="260" y2="94" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="94" width="320" height="90" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="118">Serial 115200; memoryFlash lee ssid,</tspan><tspan x="260" y="135">clave, ap_ssid, ap_password y</tspan><tspan x="260" y="152">duración (2000 ms por defecto) de</tspan><tspan x="260" y="169">Preferences</tspan></text>
+<line x1="260" y1="184" x2="260" y2="218" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<polygon points="260,218 425,261.0 260,304 95,261.0" fill="#fef9c3" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="253.0">¿hay ssid y clave</tspan><tspan x="260" y="270.0">guardados?</tspan></text>
+<text x="268" y="324" font-size="12" font-weight="bold" fill="#b45309">Sí</text>
+<line x1="425" y1="261.0" x2="480" y2="261.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/><text x="431" y="255.0" font-size="12" font-weight="bold" fill="#b45309">No</text>
+<rect x="480" y="233.0" width="220" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="257.0">Mensaje «No se encontraron</tspan><tspan x="590" y="274.0">credenciales guardadas»</tspan></text>
+<line x1="590" y1="289.0" x2="590" y2="313.0" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="545" y="313.0" width="90" height="36" rx="18" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="590" y="336.0">Fin</tspan></text>
+<line x1="260" y1="304" x2="260" y2="338" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="338" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="362">WiFi.begin y hasta 20 intentos de</tspan><tspan x="260" y="379">500 ms</tspan></text>
+<line x1="260" y1="394" x2="260" y2="428" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="428" width="320" height="73" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="452">configurarAP: levantar el punto de</tspan><tspan x="260" y="469">acceso propio (siempre, conecte o</tspan><tspan x="260" y="486">no)</tspan></text>
+<line x1="260" y1="501" x2="260" y2="535" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="535" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="559">Registrar 9 rutas en el servidor web</tspan><tspan x="260" y="576">del puerto 8080 y server.begin</tspan></text>
+<line x1="260" y1="591" x2="260" y2="625" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="625" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="649">alexaInit: dispositivo «Dispensador»</tspan><tspan x="260" y="666">de fauxmo en el puerto 80</tspan></text>
+<line x1="260" y1="681" x2="260" y2="715" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="100" y="715" width="320" height="56" fill="#ffffff" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="739">loop(): fauxmo.handle, handleServo y</tspan><tspan x="260" y="756">server.handleClient</tspan></text>
+<line x1="260" y1="771" x2="260" y2="805" stroke="#374151" stroke-width="1.5" marker-end="url(#ah)"/>
+<rect x="185" y="805" width="150" height="40" rx="20" fill="#e5e7eb" stroke="#374151" stroke-width="1.5"/><text text-anchor="middle" font-size="13" fill="#1f2937"><tspan x="260" y="829.5">Fin</tspan></text>
+</svg>
