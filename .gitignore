@@ -9,3 +9,6 @@ build/
 *.elf
 *.hex
 *.map
+
+# Restos de Google Drive
+desktop.ini
